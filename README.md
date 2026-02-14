@@ -12,11 +12,37 @@ To use the Data Encryption Standard (DES) algorithm for a practical application,
 4. DES applies initial and final permutations along with 16 rounds of substitution and permutation transformations to produce ciphertext.
 
 ## Program:
+```
+def xor_crypt(input_text, key):
+    output = []
+    key_length = len(key)
+
+    for i in range(len(input_text)):
+        xor_char = chr(ord(input_text[i]) ^ ord(key[i % key_length]))
+        output.append(xor_char)
+
+    return ''.join(output)
 
 
+# Main program
+msg = input("Enter message: ")
+key = input("Enter key: ")
 
+# Encrypt
+enc = xor_crypt(msg, key)
+
+print("Encrypted:", end=" ")
+for ch in enc:
+    print(f"{ord(ch):02X}", end=" ")
+print()
+
+# Decrypt
+dec = xor_crypt(enc, key)
+print("Decrypted:", dec)
+```
 
 ## Output:
+<img width="1612" height="830" alt="image" src="https://github.com/user-attachments/assets/31c0a04c-3afb-4cc4-a91f-70bdc701f8d2" />
 
 
 ## Result:
